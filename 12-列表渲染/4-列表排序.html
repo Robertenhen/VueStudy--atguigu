@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>列表排序</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>人员列表</h2>
+    <!-- 搜集用户的输入 -->
+    <input type="text" placeholder="请输入名字" v-model="keyword">
+    <button @click.prevent="ascend">年龄升序</button>
+    <button @click.prevent="descend">年龄降序</button>
+    <button @click.prevent="origin">原顺序</button>
+    <ul>
+      <!-- 生成哪个标签，就在对应标签上使用v-for指令 -->
+      <!-- 根据用户输入过滤数据 -->
+      <li v-for="(p,index) of filterPersons" :key="p.id">
+        {{p.name}} -- {{p.age}} -- {{p.sex}}
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    Vue.config.productionTip = false; // 阻止 Vue 在启动时生成生产提示
+    //创建Vue实例,得到 ViewModel
+
+    // 用计算属性实现
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        persons: [
+          { id: '001', name: '马冬梅', age: 22, sex: '女' },
+          { id: '002', name: '周冬雨', age: 16, sex: '女' },
+          { id: '003', name: '周杰伦', age: 18, sex: '男' },
+          { id: '004', name: '王兆伦', age: 18, sex: '男' }
+        ],
+        keyword: '',
+        sortType: 0
+      },
+      methods: {
+        ascend() {
+          this.sortType = 1; // 升序
+        },
+        descend() {
+          this.sortType = 2; // 降序
+        },
+        origin() {
+          this.sortType = 0; // 原顺序
+        }
+      },
+      computed: {
+        filterPersons() {
+          let arr = this.persons.filter(p => p.name.includes(this.keyword));
+          if (this.sortType) {
+            // 降序后减前
+            arr.sort((a, b) => this.sortType === 1 ? a.age - b.age : b.age - a.age);
+          }
+          return arr;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

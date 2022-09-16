@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id ="app">
+    <h2>学校名称：{{name}}</h2>
+    <h2>学校地址：{{address}}</h2>
+  </div>
+
+  <script>
+  Vue.config.productionTip = false; // 阻止 Vue 在启动时生成生产提示
+   //创建Vue实例,得到 ViewModel
+   let vm = new Vue({
+    el: '#app',
+    data: {
+      name:'湖北大学',
+      address:'湖北武汉',
+      student:{
+        name:'陈语欣',
+        age:3,
+        friends:[
+          {name: '桃桃', age: 3}
+        ],
+        family:{
+          father:'陈元元',
+          mother:'胡月'
+        }
+      }
+    },
+    methods: {}
+   });
+  </script>
+</body>
+
+</html>

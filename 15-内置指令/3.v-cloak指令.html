@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- <script src="../js/vue.js"></script> -->
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 
+    v-cloak指令(没有值)：
+      1.本质上是一个特殊属性，Vue实例创建完毕并接管容器后，会删除v-cloak属性。
+      2.使用css配合v-cloak可以解决网速慢时页面展示出{{xxx}}的问题。
+
+   -->
+
+
+  <div id="app">
+    <h2 v-cloak>{{name}}</h2>
+
+    <script src="../js/vue.js"></script>
+  </div>
+
+  <script>
+    Vue.config.productionTip = false; // 阻止 Vue 在启动时生成生产提示
+    //创建Vue实例,得到 ViewModel
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        name: '尚硅谷'
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>

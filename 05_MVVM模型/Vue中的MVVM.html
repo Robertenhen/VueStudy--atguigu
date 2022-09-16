@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id ="app">
+    <h1>学校名称：{{name}}</h1>
+    <h1>学校地址： {{address}}</h1>
+    <!-- <h1>测试1：{{1+1}}</h1>
+    <h1>测试2：{{$options}}</h1>
+    <h1>测试3：{{$emit}}</h1>
+    <h1>测试4：{{_c}}</h1> -->
+  </div>
+
+  <script>
+  Vue.config.productionTip = false; // 阻止 Vue 在启动时生成生产提示
+   //创建Vue实例,得到 ViewModel
+   var vm = new Vue({
+    el: '#app',
+    data: {
+      name:'明溪小学',
+      address:'纸坊大街',
+      a: 12
+    },
+    methods: {}
+   });
+
+   console.log(vm);
+  </script>
+</body>
+
+</html>

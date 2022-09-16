@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id ="app">
+    <h2>欢迎来到{{name}}学习</h2>
+    <!-- <button v-on:click="showWaring">点我提示信息</button> -->
+    <!-- <button @click="showWaring1">点我提示信息1(不传参)</button> -->
+    <button @click="showWaring2($event ,666)">点我提示信息</button>
+  </div>
+
+  <script>
+  Vue.config.productionTip = false; // 阻止 Vue 在启动时生成生产提示
+   //创建Vue实例,得到 ViewModel
+   let vm = new Vue({
+    el: '#app',
+    data: {
+      name:'尚硅谷'
+    },
+    methods: {
+      showWaring1(a,b,c,d){
+        // console.log(a,b,c,d);
+        // console.log(this); // 此处的this是vm
+        // alert('乾坤未定 你我皆是黑马');
+      },
+      showWaring2(e, num){
+        console.log(e, num);
+        // console.log(this);
+      }
+
+    }
+   });
+  </script>
+</body>
+
+</html>

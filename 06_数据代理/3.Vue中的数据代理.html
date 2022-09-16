@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>学校名称:{{name}}</h2>
+    <h2>学校地址:{{address}}</h2>
+  </div>
+
+  <script>
+    Vue.config.productionTip = false; // 阻止 Vue 在启动时生成生产提示
+
+    let data = {
+      name: '尚硅谷123',
+      address: '北京昌平'
+    };
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+      el: '#app',
+      data,
+      methods: {}
+    });
+
+    // Object.defineProperty(vm, 'name', {
+    //   get(){
+    //     console.log('获取vm的name属性');
+    //     return vm._data.name;
+    //   },
+    //   set(value){
+    //     console.log('设置vm的name属性');
+    //     vm._data.name = value;
+    //   }
+    // });
+
+  </script>
+</body>
+
+</html>

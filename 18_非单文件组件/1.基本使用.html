@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <!-- 
+    Vue中使用组件的三大步骤：
+      一、定义组件(创建组件)
+      二、注册组件
+      三、使用组件(写组件标签)
+
+      一、如何定义一个组件？
+        使用Vue.extend(options)创建，其中options和new Vue(options)时传入的那个options几乎一样，但也有点区别：
+        区别如下：
+          1.el不要写，为什么？ -- 最终所有的组件都要经过一个vm管理，有vm中的el决定服务哪个容器。
+          2.data必须写成函数。为什么呢？ -- 避免组件被复用时，数据存在引用关系。
+
+      二、如何注册组件？
+        1.局部注册： 靠new Vue的时候传入components选项。
+        2.全局注册： 靠Vue.component('组件名', 组件)
+
+      三、编写组件标签：
+        <school></school>
+
+
+   -->
+
+
+
+  <div id="app">
+    {{message}}
+    <hr>
+    <!-- 第三步：编写组件标签 -->
+    <school></school>
+    <hr>
+    <!-- 第三步：编写组件标签 -->
+    <student></student>
+    <hello></hello>
+  </div>
+
+  <div id="root">
+    <student></student>
+    <hello></hello>
+  </div>
+
+  <script>
+    Vue.config.productionTip = false; // 阻止 Vue 在启动时生成生产提示
+
+    // 第一步：创建school组件
+    const school = Vue.extend({
+      template: `
+        <div>
+          <h2>{{this.schoolName}}</h2>
+          <h2>{{this.address}}</h2>
+          <button @click='showName()'>点我提示学校名</button>
+        </div>
+      `
+      ,
+      data() {
+        return {
+          schoolName: '湖北大学',
+          address: '徐东大街'
+        }
+      },
+      methods: {
+        showName() {
+          alert(this.schoolName);
+        }
+      },
+    });
+
+    // 第一步：创建student组件
+    const student = Vue.extend({
+      template: `
+        <div>
+          <h2>{{this.studentName}}</h2>
+          <h2>{{this.age}}</h2>
+        </div>
+      `,
+      data() {
+        return {
+          studentName: '杨雪莹',
+          age: 31
+        }
+      }
+    });
+
+    const hello = Vue.extend({
+      template: `
+        <h2>
+          你好啊{{this.name}}
+        </h2>
+      `,
+      data() {
+        return {
+          name: '陈元元'
+        }
+      }
+    });
+
+    // 第二步：全局注册组件
+    Vue.component('hello', hello);
+
+    //创建Vue实例,得到 ViewModel
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊'
+      },
+      //注册组件(局部注册)
+      components: {
+        school,
+        student
+      }
+    });
+
+    let vm2 = new Vue({
+      el: '#root',
+      components: {
+        student
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id ="app">
+    <h2>今天天气很{{weather}}</h2>
+    <button @click="toggleWeather">切换天气</button>
+  </div>
+
+  <script>
+
+  Vue.config.productionTip = false; // 阻止 Vue 在启动时生成生产提示
+   //创建Vue实例,得到 ViewModel
+   let vm = new Vue({
+    el: '#app',
+    data: {
+      isHot:true
+    },
+    computed:{
+      weather(){
+        return this.isHot?'炎热':'寒冷';
+      }
+    },
+    methods: {
+      toggleWeather(){
+        this.isHot = !this.isHot;
+      }
+    }
+   });
+  </script>
+</body>
+
+</html>

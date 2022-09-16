@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>更新时的一个问题</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>人员列表</h2>
+    <button @click.prevent="updateMei">更新马冬梅</button>
+    <ul>
+      <!-- 生成哪个标签，就在对应标签上使用v-for指令 -->
+      <!-- 根据用户输入过滤数据 -->
+      <li v-for="(p,index) of persons" :key="p.id">
+        {{p.name}} -- {{p.age}} -- {{p.sex}}
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    Vue.config.productionTip = false; // 阻止 Vue 在启动时生成生产提示
+    //创建Vue实例,得到 ViewModel
+
+    // 用计算属性实现
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        persons: [
+          { id: '001', name: '马冬梅', age: 22, sex: '女' },
+          { id: '002', name: '周冬雨', age: 16, sex: '女' },
+          { id: '003', name: '周杰伦', age: 18, sex: '男' },
+          { id: '004', name: '王兆伦', age: 18, sex: '男' }
+        ]
+      },
+      methods: {
+        updateMei() {
+          // this.persons[0].sex = '未知'; // 奏效
+
+          // this.persons[0] = { id: '001', name: '马老师', age: 52, sex: '男' }; // 不奏效
+          this.persons.splice(0, 1, {
+            id: '001', name: '马老师', age: 52, sex: '男'
+          });
+        }
+      },
+      computed: {
+      }
+    });
+  </script>
+</body>
+
+</html>

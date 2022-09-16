@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <!-- 
+    v-for指令
+      1.用于展示列表数据
+      2.语法：v-for="(item, index) in xxx" :key='yyy'
+      3.可遍历： 数组、对象、字符串(用得少)、指定次数(用得少)
+   -->
+
+
+  <div id="app">
+    <!-- 遍历数组 -->
+    <h2>人员列表</h2>
+    <ul>
+      <!-- 生成哪个标签，就在对应标签上使用v-for指令 -->
+      <li v-for="(p,index) of persons" :key="index">{{p.name}} -- {{p.age}}</li>
+    </ul>
+    <!-- 遍历对象 -->
+    <h2>汽车信息</h2>
+    <ul>
+      <li v-for="(value, k) of car" :key="k">{{k}} - {{value}}</li>
+    </ul>
+    <!-- 遍历字符串 -->
+    <h2>遍历字符串(用得少)</h2>
+    <ul>
+      <li v-for="(char, index) in str" :key="index">{{index}} - {{char}}</li>
+    </ul>
+    <!-- 遍历指定次数 -->
+    <h2>遍历指定次数(用得少)</h2>
+    <ul>
+      <li v-for="(number, index) in 5" :key="index">{{index}} - {{number}}</li>
+    </ul>
+
+
+  </div>
+
+  <script>
+    Vue.config.productionTip = false; // 阻止 Vue 在启动时生成生产提示
+    //创建Vue实例,得到 ViewModel
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        persons: [
+          { id: '001', name: '张三', age: 12 },
+          { id: '002', name: '李四', age: 16 },
+          { id: '003', name: '王五', age: 18 }
+        ],
+        car: {
+          name: '奥迪A8',
+          price: '70万',
+          color: '黑色'
+        },
+        str: 'hello'
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>

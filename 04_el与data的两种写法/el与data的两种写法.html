@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{name}}</h2>
+  </div>
+
+  <script>
+    Vue.config.productionTip = false; // 阻止 Vue 在启动时生成生产提示
+
+    // 1. el的两种写法：
+    /* var app = new Vue({
+      // el: '#app', // 第一种写法
+      data: {
+        message:'你好啊'
+      },
+      methods: {}
+     });
+     console.log(app);
+     
+     app.$mount('#app'); // 第二种写法 */
+
+    // 2.data的两种写法
+    new Vue({
+      el: '#app',
+      // data的第一种写法：对象
+      /*  data: {
+         name:'尚硅谷'
+       } */
+
+      // data的第二种写法： 函数式
+      data() {
+        console.log('@@@', this); // 此处的this是Vue对象
+        return {
+          name: '尚硅谷'
+        }
+      }
+    });
+
+
+
+  </script>
+</body>
+
+</html>

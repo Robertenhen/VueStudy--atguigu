@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id ="app">
+    <!-- 普通写法 -->
+    <!-- 单向数据绑定：<input type="text" v-bind:value="name">
+    双向数据绑定：<input type="text" v-model:value="name"> -->
+
+    <!-- 简写 -->
+    单向数据绑定：<input type="text" :value="name">
+    双向数据绑定：<input type="text" v-model="name">
+
+    <!-- 如下元素是错误的，因为v-model只能应用在表单元素(输入类元素)上 -->
+    <!-- <h2 v-model:x="hello">你好啊</h2> -->
+    <!-- <h2 v-bind:x="name">你好啊</h2> -->
+  </div>
+
+  <script>
+    Vue.config.productionTip = false;
+
+   //创建Vue实例,得到 ViewModel
+   var app = new Vue({
+    el: '#app',
+    data: {
+      name:'尚硅谷'
+    },
+    methods: {}
+   });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id ="app">
+    <h2>插值语法</h2>
+    <h2>你好， {{name}}</h2>
+    <hr>
+    <a v-bind:href="url.toUpperCase()" x="hello" v-bind:y="chifan">点我去{{school.name}}学习</a>
+    <!-- <a :href="Date.now()" :x="hello" >点我去{{school.name}}学习</a> -->
+  </div>
+
+  <script>
+   //创建Vue实例,得到 ViewModel
+   var app = new Vue({
+    el: '#app',
+    data: {
+      message:'你好啊',
+      name: 'Jack',
+      url:'http://www.atguigu.com',
+      chifan:'一碗饭',
+      hello:'你好',
+      school:{
+        name:'黑马pink'
+      }
+    },
+    methods: {}
+   });
+  </script>
+</body>
+
+</html>
